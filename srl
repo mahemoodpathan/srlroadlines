@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Soudagar Road Lines (SRL) | All India Transport & Car Rental | Since 2000</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #fefefe;
+      color: #1e2a3e;
+      line-height: 1.5;
+    }
+
+    :root {
+      --primary-deep: #0f2c39;
+      --primary-accent: #dc7f2c;
+      --accent-glow: #f0a35e;
+      --secondary-teal: #2c6e6e;
+      --light-bg: #f9f7f3;
+      --card-white: #ffffff;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+      --border-radius-card: 1.75rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* header */
+    .header {
+      background: var(--primary-deep);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(0px);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      flex-wrap: wrap;
+    }
+    .brand h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #fff 30%, #f5b56e 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .brand .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--primary-accent);
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #f0f3f8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary-accent);
+    }
+    .mobile-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* hero */
+    .hero-alt {
+      background: linear-gradient(107deg, #0a232e 0%, #144452 100%), url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center 30%;
+      padding: 5rem 0 6rem;
+      color: white;
+    }
+    .hero-alt h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero-badge {
+      background: rgba(220,127,44,0.2);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(220,127,44,0.5);
+    }
+    .cta-group {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-accent {
+      background: var(--primary-accent);
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      border: none;
+      color: #1e2a3e;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-outline-light {
+      border: 2px solid white;
+      background: transparent;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-accent:hover {
+      background: #c25e1a;
+      transform: translateY(-2px);
+    }
+
+    /* section headings */
+    .section-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-head h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-deep);
+      margin-bottom: 0.75rem;
+    }
+    .section-head p {
+      color: #4a5b6e;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* service cards */
+    .service-grid, .truck-grid, .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .service-card-alt {
+      background: var(--card-white);
+      border-radius: var(--border-radius-card);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+      border: 1px solid #e9ecef;
+    }
+    .service-card-alt i {
+      font-size: 2.5rem;
+      color: var(--primary-accent);
+      margin-bottom: 1rem;
+    }
+    .service-card-alt:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-accent);
+    }
+
+    /* fleet styling */
+    .vehicle-badge {
+      background: var(--primary-deep);
+      color: white;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .fleet-card-alt {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+      border-bottom: 3px solid var(--primary-accent);
+    }
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--secondary-teal);
+      margin-top: 0.5rem;
+    }
+
+    /* stats row */
+    .stat-row {
+      background: var(--primary-deep);
+      padding: 3rem 0;
+      color: white;
+    }
+    .stats-flex {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    /* reviews section */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      border: 1px solid #f0e2d4;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .stars {
+      color: #ffb83b;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      color: #2d3a48;
+    }
+    .reviewer {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .reviewer i {
+      font-size: 2rem;
+      color: var(--primary-accent);
+    }
+    .service-tag {
+      font-size: 0.7rem;
+      background: #ede9e2;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* contact area */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: var(--light-bg);
+      border-radius: 2rem;
+      padding: 2rem;
+    }
+    .info-block {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .info-block i {
+      width: 2rem;
+      color: var(--primary-accent);
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+    .form-block input, .form-block textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid #ddd;
+      background: white;
+      font-family: inherit;
+    }
+    .map-frame {
+      margin-top: 2rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      height: 220px;
+    }
+    footer {
+      background: #0a1c24;
+      color: #bcd0df;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--primary-deep);
+        padding: 1rem;
+        gap: 1rem;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .hero-alt h2 {
+        font-size: 2rem;
+      }
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    .phone-highlight {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-accent);
+    }
+    hr {
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>SOUDAGAR ROAD LINES</h1>
+        <div class="tag">SRL • EST. 2000 • ALL INDIA PERMIT</div>
+      </div>
+      <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navList">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#fleet">Fleet</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="home" class="hero-alt">
+    <div class="container">
+      <div class="hero-badge"><i class="fas fa-truck-fast"></i> India's trusted logistics partner</div>
+      <h2>Heavy Transport & <br>Premium Car Rentals</h2>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem 0;">All India coverage | Professional drivers | Door-to-door service since 2000</p>
+      <div class="cta-group">
+        <a href="tel:+916361045266" class="btn-accent"><i class="fas fa-phone-alt"></i> Call 6361045266</a>
+        <a href="#contact" class="btn-outline-light"><i class="fas fa-envelope"></i> Book Now</a>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span><i class="fas fa-check-circle"></i> 4 Heavy Trucks</span>
+        <span><i class="fas fa-check-circle"></i> 3 Premium Cars</span>
+        <span><i class="fas fa-check-circle"></i> 24+ Years Excellence</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-head">
+        <h3>About Soudagar Road Lines</h3>
+        <p>Your partner in seamless logistics & mobility solutions across India</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem;">
+        <div>
+          <p style="margin-bottom: 1.2rem;">Founded in <strong>2000</strong> at <strong>TQ Chincholi, District Gulbarga, Karnataka</strong>, Soudagar Road Lines (SRL) has earned a reputation for reliability, competitive pricing, and safety. We operate a dedicated fleet of trucks and rental cars with all-India permits.</p>
+          <p style="margin-bottom: 1.2rem;">Our fleet includes <strong>14-tyre, 12-tyre & 10-tyre trucks</strong> ideal for bulk cargo, and premium cars like <strong>Chevrolet Tavera, Suzuki Swift VDI, Suzuki Dzire Tour</strong> for passenger rental.</p>
+          <p><i class="fas fa-star" style="color: #dc7f2c;"></i> <strong>All India Permit</strong> – Seamless interstate operations<br>
+          <i class="fas fa-star" style="color: #dc7f2c;"></i> <strong>Highly Professional Drivers</strong> – trained, verified & experienced<br>
+          <i class="fas fa-star" style="color: #dc7f2c;"></i> <strong>24/7 Customer Support</strong> – Tracking & coordination</p>
+        </div>
+        <div style="background: #f0ebe3; border-radius: 1.5rem; padding: 1.8rem;">
+          <i class="fas fa-location-dot" style="font-size: 2rem; color:#dc7f2c;"></i>
+          <h4 style="margin: 0.5rem 0 0.2rem;">Head Office</h4>
+          <p>Soudagar Road Lines (SRL)<br>Near Main Bus Stand, TQ Chincholi,<br>Dist Gulbarga, Karnataka - 585306</p>
+          <hr>
+          <i class="fas fa-envelope"></i> <strong>Email:</strong> soudagarazar72@gmail.com<br>
+          <i class="fas fa-phone-alt"></i> <strong>Emergency / Booking:</strong> +91 6361045266
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="background: #f6f4ef; padding: 4rem 0;">
+    <div class="container">
+      <div class="section-head">
+        <h3>Our Core Services</h3>
+        <p>End-to-end transport & rental solutions across all Indian states</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card-alt"><i class="fas fa-truck-ramp-box"></i><h4>Goods Transport</h4><p>FTL / LTL, industrial cargo, parcel & heavy machinery movement all over India.</p></div>
+        <div class="service-card-alt"><i class="fas fa-car"></i><h4>Car Rental Services</h4><p>Local / Outstation rentals, corporate tours, wedding guest movement. AC cars with drivers.</p></div>
+        <div class="service-card-alt"><i class="fas fa-passport"></i><h4>All India Permit Fleet</h4><p>No state barrier. Our trucks are fully authorised for cross-border logistics.</p></div>
+        <div class="service-card-alt"><i class="fas fa-warehouse"></i><h4>Logistics + Warehousing</h4><p>Storage support, inventory management and supply chain solutions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fleet" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-head">
+        <h3>Our Fleet</h3>
+        <p>Modern, well-maintained vehicles for every need</p>
+      </div>
+      <h4 style="font-size: 1.6rem; margin: 1.5rem 0 1rem;"><i class="fas fa-truck"></i> Heavy Commercial Trucks</h4>
+      <div class="truck-grid">
+        <div class="fleet-card-alt"><div class="vehicle-badge">1 Unit</div><i class="fas fa-trailer" style="font-size: 2rem; color: #dc7f2c;"></i><h3>14‑Tyre Truck</h3><p>Heavy hauler, ideal for industrial cargo & long distances. Payload ~30-35 tons.</p><div class="price-note"><i class="fas fa-route"></i> All India permit</div></div>
+        <div class="fleet-card-alt"><div class="vehicle-badge">2 Units</div><i class="fas fa-truck-moving" style="font-size: 2rem; color: #dc7f2c;"></i><h3>12‑Tyre Multi‑Axle</h3><p>Versatile duo for FTL, parcel & bulk goods. Fuel-efficient & reliable.</p><div class="price-note"><i class="fas fa-charging-station"></i> Two units always ready</div></div>
+        <div class="fleet-card-alt"><div class="vehicle-badge">1 Unit</div><i class="fas fa-truck" style="font-size: 2rem; color: #dc7f2c;"></i><h3>10‑Tyre Medium Truck</h3><p>Quick turnaround, regional distribution, lighter heavy cargo.</p><div class="price-note"><i class="fas fa-road"></i> Maneuverable & efficient</div></div>
+      </div>
+
+      <h4 style="font-size: 1.6rem; margin: 2.5rem 0 1rem;"><i class="fas fa-car-side"></i> Car Rental Fleet (3 vehicles)</h4>
+      <div class="car-grid">
+        <div class="fleet-card-alt"><i class="fas fa-caravan" style="font-size: 2rem; color: #dc7f2c;"></i><h3>Chevrolet Tavera</h3><p>7-Seater MUV, spacious & comfortable for family trips, group tours, airport transfers.</p><div class="price-note">AC | Diesel | Professional driver</div></div>
+        <div class="fleet-card-alt"><i class="fas fa-car" style="font-size: 2rem; color: #dc7f2c;"></i><h3>Suzuki Swift VDI</h3><p>Fuel-efficient hatchback, perfect for city rides & outstation trips. Great mileage.</p><div class="price-note">Diesel | AC | Clean interiors</div></div>
+        <div class="fleet-card-alt"><i class="fas fa-car-side" style="font-size: 2rem; color: #dc7f2c;"></i><h3>Suzuki Dzire Tour</h3><p>Compact sedan with ample boot space, ideal for business travel & leisure.</p><div class="price-note">Comfortable seating | Well maintained</div></div>
+      </div>
+      <div style="background: #e8e1d6; border-radius: 2rem; padding: 1rem; text-align: center; margin-top: 2rem;">
+        <i class="fas fa-id-card"></i> All our rental cars come with experienced chauffeurs. <strong>Call 6361045266 for best rates!</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="stat-row">
+    <div class="container stats-flex">
+      <div><div class="stat-number">24+</div><div>Years of Trust</div></div>
+      <div><div class="stat-number"><i class="fas fa-map-india"></i> All India</div><div>Permit Coverage</div></div>
+      <div><div class="stat-number">100%</div><div>Professional Drivers</div></div>
+      <div><div class="stat-number">7</div><div>Vehicles (Trucks + Cars)</div></div>
+    </div>
+  </div>
+
+  <!-- Customer Reviews Section -->
+  <section id="reviews" style="padding: 4rem 0; background: #fefaf5;">
+    <div class="container">
+      <div class="section-head">
+        <h3>What Our Customers Say</h3>
+        <p>Real experiences from our transport & rental clients across India</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">“Hired the 14-tyre truck for moving industrial machinery from Bangalore to Hyderabad. On-time pickup, professional driver, and zero damage. Extremely satisfied with SRL’s service.”</p>
+          <div class="reviewer"><i class="fas fa-user-circle"></i> <span>Ramesh Kulkarni</span></div>
+          <div class="service-tag"><i class="fas fa-truck"></i> Goods Transport</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">“We booked Chevrolet Tavera for a family trip to Hampi. Car was clean, AC perfect, driver knew the route well. Very affordable rates compared to others. Highly recommend!”</p>
+          <div class="reviewer"><i class="fas fa-user-circle"></i> <span>Priya S. Naik</span></div>
+          <div class="service-tag"><i class="fas fa-car"></i> Car Rental</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">“Regularly use SRL for parcel delivery from Gulbarga to Pune. Their 12-tyre trucks are reliable, tracking is prompt, and the team is always responsive. Best in the region.”</p>
+          <div class="reviewer"><i class="fas fa-user-circle"></i> <span>Anand Patil</span></div>
+          <div class="service-tag"><i class="fas fa-boxes"></i> Logistics</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">“Suzuki Dzire Tour was perfect for my business travel across Karnataka. Professional driver, punctual pickup, fair price. Will book again. Thank you Soudagar team!”</p>
+          <div class="reviewer"><i class="fas fa-user-circle"></i> <span>Kiran Jadhav</span></div>
+          <div class="service-tag"><i class="fas fa-car-side"></i> Car Rental</div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: #5c6b7a;">
+        <i class="fas fa-thumbs-up"></i> 100+ satisfied clients across India ⭐ Trusted since 2000
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-head">
+        <h3>Contact & Booking</h3>
+        <p>For any service, price quotes or urgent bookings — reach out now</p>
+      </div>
+      <div class="contact-wrapper">
+        <div class="info-block">
+          <h4><i class="fas fa-headset"></i> Get in touch</h4>
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span><strong>Phone:</strong> <a href="tel:+916361045266" style="color:#dc7f2c;">+91 6361045266</a></span></div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> <span><strong>Email:</strong> soudagarazar72@gmail.com</span></div>
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>TQ Chincholi, Dist Gulbarga, Karnataka - 585306</span></div>
+          <hr>
+          <p><i class="fas fa-clock"></i> 24x7 Support | All India Service<br>For goods transport & car rental, we provide instant quotes.</p>
+          <a href="tel:+916361045266" class="btn-accent" style="display: block; text-align: center; margin-top: 1rem;"><i class="fas fa-mobile-alt"></i> Call Now: 6361045266</a>
+        </div>
+        <div class="form-block info-block">
+          <h4><i class="fas fa-pen-alt"></i> Quick Enquiry</h4>
+          <form id="contactForm">
+            <input type="text" id="fullName" placeholder="Full Name" required style="margin-bottom: 0.8rem;">
+            <input type="tel" id="contactNo" placeholder="Mobile Number" required style="margin-bottom: 0.8rem;">
+            <input type="text" id="serviceType" placeholder="Service: Truck / Car Rental / Both" style="margin-bottom: 0.8rem;">
+            <textarea rows="3" id="userMsg" placeholder="Origin, destination, travel date or cargo details..."></textarea>
+            <button type="submit" style="background: var(--primary-accent); border: none; width: 100%; padding: 0.8rem; border-radius: 2rem; font-weight: bold; margin-top: 1rem; cursor: pointer; color:#1e2a3e;"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
+            <p style="font-size: 0.7rem; margin-top: 0.8rem;">We’ll respond quickly or call you back. You can also email soudagarazar72@gmail.com</p>
+          </form>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://maps.google.com/maps?q=Chincholi+Karnataka+India&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><strong>SOUDAGAR ROAD LINES (SRL)</strong> — Since 2000 | All India Transport, Logistics & Car Rentals</p>
+      <p style="margin: 0.8rem 0;">📍 TQ Chincholi, Dist Gulbarga, Karnataka | 📞 <a href="tel:+916361045266" style="color:#f5b56e;">6361045266</a> | ✉️ soudagarazar72@gmail.com</p>
+      <p>© 2025 Soudagar Road Lines. Professional Drivers | All India Permit | Reliable Fleet</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('mobileToggle');
+    const navList = document.getElementById('navList');
+    toggleBtn.addEventListener('click', () => {
+      navList.classList.toggle('show');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+        const targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (navList.classList.contains('show')) navList.classList.remove('show');
+        }
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('contactNo').value.trim();
+        if (!name || !phone) {
+          alert("Please provide your name and phone number for quick response.");
+          return;
+        }
+        alert(`Thank you ${name}! We will contact you shortly on ${phone}. For urgent requirements, call us directly at 6361045266 or email soudagarazar72@gmail.com`);
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
